@@ -21,4 +21,15 @@ export class MeasurementsService {
 
     return new Measurement(measurementProps);
   }
+
+  async update(id: string, data: MeasurementDto) {
+    const foundMeasurementProps = await this.repository.findById(id);
+    if (!foundMeasurementProps) {
+      throw new Error('Measurement not found');
+    }
+
+    const measurementProps = await this.repository.update({ id, ...data });
+
+    return new Measurement(measurementProps);
+  }
 }

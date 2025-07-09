@@ -31,4 +31,15 @@ export class MeasurementsInMemoryRepository
 
     return measurementProps || null;
   }
+
+  async update(
+    measurementProps: EntityProps<MeasurementProps>
+  ): Promise<EntityProps<MeasurementProps>> {
+    const measurements = this.measurements.filter(
+      (measurement) => measurement.id !== measurementProps.id
+    );
+    this.measurements = [...measurements, measurementProps];
+
+    return measurementProps;
+  }
 }

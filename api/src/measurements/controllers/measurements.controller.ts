@@ -37,5 +37,18 @@ export class MeasurementController {
         return c.json(measurement.propsCopy);
       }
     );
+
+    this.appController.put(
+      '/:id',
+      zValidator('param', z.object({ id: z.string().uuid() })),
+      zValidator('json', MeasurementSchema),
+      async (c) => {
+        const { id } = c.req.valid('param');
+        const data = c.req.valid('json');
+        const measurement = await this.service.update(id, data);
+
+        return c.json(measurement.propsCopy);
+      }
+    );
   }
 }
