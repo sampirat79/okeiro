@@ -10,3 +10,7 @@ docker-compose up -d
 ## Server
 
 - [Server documentation](./api/README.md)
+
+## Client
+
+- [Client documentation](./app/README.md)
