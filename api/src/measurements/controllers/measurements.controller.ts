@@ -28,6 +28,24 @@ export class MeasurementController {
     );
 
     this.appController.get(
+      '/',
+      zValidator(
+        'query',
+        z.object({
+          limit: z.preprocess(Number, z.number().min(1)).optional().default(10),
+          page: z.preprocess(Number, z.number().min(1)).optional().default(1),
+        })
+      ),
+      async (c) => {
+        const query = c.req.valid('query');
+        const result = await this.service.fetchByQuery(query);
+        const data = result.data.map((measurement) => measurement.propsCopy);
+
+        return c.json({ ...result, data });
+      }
+    );
+
+    this.appController.get(
       '/:id',
       zValidator('param', z.object({ id: z.string().uuid() })),
       async (c) => {

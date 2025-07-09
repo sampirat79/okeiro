@@ -13,6 +13,18 @@ export class MeasurementsService {
     return new Measurement(measurementProps);
   }
 
+  async fetchByQuery(query: { limit: number; page: number }) {
+    const result = await this.repository.findMany(query);
+    const data = result.data.map(
+      (measurementProps) => new Measurement(measurementProps)
+    );
+
+    return {
+      ...result,
+      data,
+    };
+  }
+
   async getById(id: string) {
     const measurementProps = await this.repository.findById(id);
     if (!measurementProps) {

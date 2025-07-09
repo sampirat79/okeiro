@@ -24,6 +24,19 @@ export class MeasurementsInMemoryRepository
     return measurementProps;
   }
 
+  async findMany(query: { limit: number; page: number }) {
+    const { limit, page } = query;
+    const start = (page - 1) * limit;
+    const end = page * limit;
+
+    return {
+      data: this.measurements.slice(start, end),
+      limit,
+      page,
+      total: this.measurements.length,
+    };
+  }
+
   async findById(id: string): Promise<EntityProps<MeasurementProps> | null> {
     const measurementProps = this.measurements.find(
       (measurement) => measurement.id === id
