@@ -23,4 +23,12 @@ export class MeasurementsInMemoryRepository
 
     return measurementProps;
   }
+
+  async findById(id: string): Promise<EntityProps<MeasurementProps> | null> {
+    const measurementProps = this.measurements.find(
+      (measurement) => measurement.id === id
+    );
+
+    return measurementProps || null;
+  }
 }

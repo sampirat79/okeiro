@@ -5,4 +5,5 @@ export interface MeasurementsRepositoryPort {
   create(
     data: EntityProps<MeasurementProps>
   ): Promise<EntityProps<MeasurementProps>>;
+  findById(id: string): Promise<EntityProps<MeasurementProps> | null>;
 }

@@ -12,4 +12,13 @@ export class MeasurementsService {
 
     return new Measurement(measurementProps);
   }
+
+  async getById(id: string) {
+    const measurementProps = await this.repository.findById(id);
+    if (!measurementProps) {
+      throw new Error('Measurement not found');
+    }
+
+    return new Measurement(measurementProps);
+  }
 }
