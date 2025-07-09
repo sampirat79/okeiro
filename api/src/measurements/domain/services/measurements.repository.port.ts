@@ -9,4 +9,5 @@ export interface MeasurementsRepositoryPort {
   update(
     data: EntityProps<MeasurementProps>
   ): Promise<EntityProps<MeasurementProps>>;
+  delete(id: string): Promise<void>;
 }

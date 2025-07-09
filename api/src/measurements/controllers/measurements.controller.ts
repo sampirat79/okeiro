@@ -50,5 +50,17 @@ export class MeasurementController {
         return c.json(measurement.propsCopy);
       }
     );
+
+    this.appController.delete(
+      '/:id',
+      zValidator('param', z.object({ id: z.string().uuid() })),
+      async (c) => {
+        const { id } = c.req.valid('param');
+
+        await this.service.delete(id);
+
+        return c.json({ status: 'success' });
+      }
+    );
   }
 }

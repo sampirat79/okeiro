@@ -42,4 +42,11 @@ export class MeasurementsInMemoryRepository
 
     return measurementProps;
   }
+
+  async delete(id: string): Promise<void> {
+    const filteredMeasurements = this.measurements.filter(
+      (measurement) => measurement.id !== id
+    );
+    this.measurements = [...filteredMeasurements];
+  }
 }

@@ -32,4 +32,13 @@ export class MeasurementsService {
 
     return new Measurement(measurementProps);
   }
+
+  async delete(id: string) {
+    const foundMeasurementProps = await this.repository.findById(id);
+    if (!foundMeasurementProps) {
+      throw new Error('Measurement not found');
+    }
+
+    await this.repository.delete(id);
+  }
 }
