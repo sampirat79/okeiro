@@ -10,6 +10,7 @@
 
 # deps
 node_modules/
+generated/
 
 # env
 .env
@@ -26,3 +27,5 @@ lerna-debug.log*
 
 # misc
 .DS_Store
+
+/src/generated/prisma
