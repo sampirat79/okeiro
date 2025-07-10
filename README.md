@@ -14,3 +14,7 @@ docker-compose up -d
 ## Client
 
 - [Client documentation](./app/README.md)
+
+### Challenges
+
+- [Challenges answers](./CHALLENGES.md)
