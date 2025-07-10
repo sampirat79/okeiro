@@ -34,3 +34,7 @@ pnpm test
 ### Improvements
 
 - Error handling
+
+### Resources
+
+- [API End Points Documentation](./ENDPOINTS.md)
