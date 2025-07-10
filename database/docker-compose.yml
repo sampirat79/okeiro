@@ -1,0 +1,7 @@
+services:
+  postgres:
+    image: postgres:12.0-alpine
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./database/postgres-data:/var/postgres-data/
