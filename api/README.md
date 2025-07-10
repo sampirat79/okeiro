@@ -30,3 +30,7 @@ open http://localhost:3000
 ```sh
 pnpm test
 ```
+
+### Improvements
+
+- Error handling
